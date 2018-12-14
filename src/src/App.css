@@ -2,12 +2,9 @@ li a {
   display: block;
   overflow: hidden;
   background: #fff;
-  
+  padding: 10px 0;
 }
-strong.duc {
-  float: none;
-  margin-right: 0;
-}
+
 li.feature {
   width: 39.917%;
 }
@@ -3272,6 +3269,7 @@ input[type=text]:focus, input[type=tel]:focus, textarea:focus {
 }
 
 .listorder li .colinfo {
+  display: inline-block;
   overflow: visible;
   width: 450px;
   padding-left: 5px
@@ -3302,10 +3300,7 @@ input[type=text]:focus, input[type=tel]:focus, textarea:focus {
   color: #c10017;
   float: right
 }
-.listorder li .colinfo strong.duc {
-  float: none;
-  margin-right: 0;
-}
+
 .listorder.shockprice29 li .colinfo strong {
   font-weight: bold;
   color: #fff
