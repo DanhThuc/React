@@ -7,13 +7,31 @@ class CartResult extends Component {
     onChange=()=>{
 
     }
-
+    sumTotal =(cart)=>{
+        let result =0;
+        if(cart.length>0){
+            for(let i=0;i<cart.length;i++){
+                result+= cart[i].phone.price * cart[i].quantity;
+            }
+        }
+        return result;
+    }
+    sumNumberOfPhone =(cart) =>{
+        let num = 0;
+        if(cart.length>0){
+            for(let i=0;i<cart.length;i++){
+                num+= cart[i].quantity;
+            }
+        }
+        return num;
+    }
     render() {
+        var {cart} = this.props
         return (
             <div className="area_total">
                 <div className="total ">
-                    <b>Tổng tiền (2 sản phẩm):</b>
-                    <strong id="totalOr" data-val="750000.0">750.000₫</strong>
+                    <b>Tổng tiền ({this.sumNumberOfPhone(cart)} sản phẩm):</b>
+                    <strong id="totalOr" data-val="750000.0">{this.sumTotal(cart)}$</strong>
                 </div>
                 <div id="cod" className="hide">
                     <span>Phí vận chuyển:</span>

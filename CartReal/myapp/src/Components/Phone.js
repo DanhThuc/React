@@ -29,11 +29,15 @@ class Phone extends Component {
   </span>);
     return kmarr;
   }
+  	onClickByBuy=(phone)=>{
+		this.props.onAddToCart(phone);
+	}
   render() {
     var {phone,km} = this.props;
+	
     return (
         
-        <a href="/">
+        <a href="#">
         <div className="fleft">
           <img alt="ss" width="180" height="180" src={phone.image}/>
         </div>
@@ -51,7 +55,10 @@ class Phone extends Component {
             {this.showPromotions(phone)}
           </div>
           <div className="button">
-            <button type="button" className="btn_buynow" >Mua</button>
+		  	
+            <button type="button" className="btn_buynow"
+            onClick ={()=>this.onClickByBuy(phone)}
+             >Mua</button>
             <button type="button" className="btn_buyins" >Mua trả góp</button>
           </div>
         </div>

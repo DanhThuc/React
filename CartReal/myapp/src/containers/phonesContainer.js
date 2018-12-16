@@ -3,22 +3,26 @@ import { connect } from 'react-redux';
 import Phones from '../Components/Phones';
 import Phone from '../Components/Phone';
 import PropTypes from 'prop-types';
+import { actAddToCart } from '../actions/index';
 
 class PhonesContainer extends Component {
     showProduct(phones) {
         var result = null;
+        var {onAddToCart} = this.props;
         if (phones.length > 0) {
             result = phones.map((phone, index) => {
                 if (index % 4 === 0) {
                     return <li className="feature" key={index}>
 
-                        <Phone phone={phone} km={index} />
+                        <Phone phone={phone}
+                        onAddToCart = {onAddToCart}
+                        km={index} />
 
                     </li>
                 }
                 else
                     return <li key={index}>
-                        <Phone phone={phone} km={index} />
+                        <Phone phone={phone} onAddToCart = {onAddToCart} km={index} />
                     </li>
             });
 
@@ -27,7 +31,6 @@ class PhonesContainer extends Component {
     };
     render() {
         let { phones } = this.props;
-        console.log(phones);
 
         return (
             <Phones >{this.showProduct(phones)}</Phones>
@@ -37,6 +40,13 @@ class PhonesContainer extends Component {
 const mapStateToProps = state => {
     return {
         phones: state.phones
+    }
+}
+const mapDispatchToProps = (dispatch,action) => {
+    return {
+        onAddToCart : (phone) =>{
+            dispatch(actAddToCart(phone,1));
+        }
     }
 }
 PhonesContainer.propTypes = {
@@ -58,4 +68,4 @@ PhonesContainer.propTypes = {
         })
     ).isRequired
   };
-export default connect(mapStateToProps, null)(PhonesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PhonesContainer);

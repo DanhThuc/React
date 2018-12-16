@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Cart from '../Components/Cart'
 import CartItem from '../Components/CartItem';
+import CartResult from '../Components/CartResult';
 import * as Message from '../constain/Message';
 
 
@@ -12,6 +13,7 @@ class CartsContainer extends Component {
         return (
             <Cart>
                 {this.showCartItem(cart)}
+                {this.showTotalAmount(cart)}
             </Cart>
         );
     }
@@ -29,6 +31,14 @@ class CartsContainer extends Component {
             })
         }
         return result;
+    }
+    showTotalAmount = (cart) =>{
+       
+        if(cart.length >0)
+        {
+            return <CartResult cart ={cart}/>
+        }
+        return null;
     }
 }
 
